@@ -1,0 +1,67 @@
+DB Model
+
+Organization
+	ID
+	Name
+	Address
+	domain
+	List<Allowance>
+
+OrganizationDesignation
+	id
+	desiname--> Sr Dev
+	Allowanceid -->
+	organizationid--> 
+
+
+Allowance
+	id
+	name
+	description
+	maxamount per month
+	isDefault
+	min amount
+
+----------------------------------
+UserProfile
+	ID
+	name
+	address
+	description
+	emailaddress
+	mobileno
+	organizationid
+	desgignationid
+	List<Documents> govermentDocs
+	status
+
+Documents
+	id
+	Enum type
+	filename
+
+UserOTP
+	id
+	email
+	mobile
+	otp
+	expirydate
+
+UserRole
+	roleid
+	userid
+	userrole
+
+UserCredentials
+	userid
+	encryptedpassword
+
+UserDocuments
+	id
+	name
+	filenmae
+
+
+---------------------------------
+FileStore Path in Configuration
+defualt allowaynceid in Configuration. 1,2,3
