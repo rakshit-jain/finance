@@ -1,0 +1,430 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hackathon</groupId>
+	<artifactId>jsf</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>Hcentive Hackathon</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<spring.version>4.1.6.RELEASE</spring.version>
+		<hackathon.model>0.0.1-SNAPSHOT</hackathon.model>
+		<springboot.version>1.2.3.RELEASE</springboot.version>
+		<springwebflow-version>2.4.1.RELEASE</springwebflow-version>
+		<springsecurity-version>4.0.0.RELEASE</springsecurity-version>
+		<primefaces-version>5.3</primefaces-version>
+		<org.slf4j-version>1.7.12</org.slf4j-version>
+		<java-version>1.7</java-version>
+		<hibernate.verion>4.3.9.Final</hibernate.verion>
+		<prettyfaces.version>3.4.1.Final</prettyfaces.version>
+		<!-- Common Configuration version -->
+		<common.configuration.version>1.10</common.configuration.version>
+		<google.gson.version>2.3.1</google.gson.version>
+		<maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
+		<maven.surefire.junit.plugin.version>2.18.1</maven.surefire.junit.plugin.version>
+	</properties>
+
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.mario.hackathon</groupId>
+			<artifactId>model</artifactId>
+			<version>${hackathon.model}</version>
+		</dependency>
+
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.webflow</groupId>
+			<artifactId>spring-binding</artifactId>
+			<version>${springwebflow-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.webflow</groupId>
+			<artifactId>spring-js</artifactId>
+			<version>${springwebflow-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.webflow</groupId>
+			<artifactId>spring-webflow</artifactId>
+			<version>${springwebflow-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.webflow</groupId>
+			<artifactId>spring-faces</artifactId>
+			<version>${springwebflow-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${springsecurity-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${springsecurity-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${springsecurity-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${springsecurity-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ocpsoft.rewrite</groupId>
+			<artifactId>rewrite-servlet</artifactId>
+			<version>${prettyfaces.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ocpsoft.rewrite</groupId>
+			<artifactId>rewrite-config-prettyfaces</artifactId>
+			<version>${prettyfaces.version}</version>
+		</dependency>
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+
+		<!-- Common Configurations -->
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>${common.configuration.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${google.gson.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		<!-- JSF-303 Dependency Injection -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.1</version>
+		</dependency>
+
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- Sun Mojarra JSF 2 runtime -->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<!-- PrimeFaces component library -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>${primefaces-version}</version>
+		</dependency>
+		<!-- File uploads -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- JSR 303 validation -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.brickred</groupId>
+			<artifactId>socialauth</artifactId>
+			<version>4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>el-impl</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<!-- MySQL database driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.9</version>
+		</dependency>
+
+
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+	</dependencies>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<name>oss.sonatype.org</name>
+			<id>oss.sonatype.org</id>
+			<url>http://oss.sonatype.org/content/groups/public</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Javascript and CSS files compression -->
+				<plugin>
+					<groupId>net.alchim31.maven</groupId>
+					<artifactId>yuicompressor-maven-plugin</artifactId>
+					<version>1.1</version>
+					<configuration>
+						<!-- Replace the files (nosuffix needed like ".min" -->
+						<nosuffix>true</nosuffix>
+						<jswarn>false</jswarn>
+						<!-- Overwrite existing files -->
+						<excludes>
+							<exclude>**/*.min.js</exclude>
+							<!--<exclude>**/*.css</exclude> *if you want to exclude css* -->
+						</excludes>
+						<warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+						<webappDirectory>${project.build.directory}/min</webappDirectory>
+						<!-- a new line is added after 1000 columns is reached -->
+						<linebreakpos>1000</linebreakpos>
+					</configuration>
+					<executions>
+						<execution>
+							<id>compress_js_css</id>
+							<!-- this phase is very important, otherwise the files will be overwritten 
+								by the original ones -->
+							<phase>process-resources</phase>
+							<goals>
+								<goal>compress</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>${maven.surefire.junit.plugin.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<skipTests>true</skipTests>
+					<includes>
+						<include>**/*.class</include>
+					</includes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+					<wtpversion>2.0</wtpversion>
+					<sourceExcludes>
+						<sourceExclude>**/.svn/**</sourceExclude>
+					</sourceExcludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>install</id>
+						<phase>install</phase>
+						<goals>
+							<goal>sources</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.0-beta-1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+		</plugins>
+
+		<resources>
+			<resource>
+				<targetPath>${project.build.directory}/tomcat/conf/</targetPath>
+				<directory>${basedir}/src/test/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+
+			<resource>
+				<targetPath>${project.build.directory}/tomcat/conf/</targetPath>
+				<directory>${basedir}/src/test/resources</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+
+			<resource>
+				<targetPath>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</targetPath>
+				<directory>${basedir}/src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+
+			<resource>
+				<targetPath>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</targetPath>
+				<directory>${basedir}/src/main/resources/spring/</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+
+			<resource>
+				<targetPath>${project.build.directory}/${project.build.finalName}/WEB-INF</targetPath>
+				<directory>${basedir}/src/main/webapp/WEB-INF</directory>
+				<includes>
+					<include>**/web.xml</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>${basedir}/src/main/resources/spring</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</testResource>
+			<testResource>
+				<directory>${basedir}/src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</testResource>
+			<testResource>
+				<directory>${basedir}/src/test/resources</directory>
+			</testResource>
+		</testResources>
+		<finalName>hcentive-hackathon</finalName>
+	</build>
+</project>

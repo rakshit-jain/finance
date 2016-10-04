@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<div class="headerarea">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 logo">
+				<p:commandLink action="#{loginBean.getHomeURL}">
+					<img src="#{request.contextPath}/resources/images/hcentive-logo1.png" alt="Logo"/>
+				</p:commandLink>
+				</div>
+				<div class="headerRight col-md-6">
+				<h:form>
+					<div class="user pull-right">
+						<div class="userImage">
+							<c:choose>
+								<c:when test="${empty userProfile.profileURL}">
+									<img src="#{request.contextPath}/resources/images/icon-person-64.png" />
+								</c:when>
+								<c:otherwise>
+									<img src="#{userProfile.profileURL}" />
+								</c:otherwise>
+							</c:choose>
+						</div>
+						
+							<div class="userName">
+								<p:outputLabel value="#{userProfile.name}" styleClass="nameuser" />
+								<p:link styleClass="updateuser" outcome="updateProfile">
+									Update Information
+								</p:link>
+							</div>
+							<div class="logOut">
+								<p:commandLink action="#{loginBean.logout}" styleClass="text-hide" ajax="false"/>
+							</div>
+					</div>
+						</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="firstRow">
+		<div class="container">
+			<h3>Welcome #{userProfile.name}</h3>
+		</div>
+	</div>
+</ui:composition>

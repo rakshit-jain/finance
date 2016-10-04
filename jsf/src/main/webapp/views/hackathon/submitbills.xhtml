@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="layout/user_layout.xhtml">
+
+	<ui:define name="metaTags">
+		<link
+				href="#{request.contextPath}/resources/style/uploadfile.css"
+				rel="stylesheet" />
+	</ui:define>
+	
+	<ui:define name="body">
+		<div class="body-content">
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js" />
+			<script
+				src="#{request.contextPath}/resources/script/bootstrapdate.js"></script>
+			<script
+				src="#{request.contextPath}/resources/script/jquery.upload-min.js"></script>
+			
+			<script
+				src="#{request.contextPath}/resources/script/angularScript.js"></script>
+
+			<div ng-app="hcentive" ng-controller="addBills" class="container">
+				<div class="innerWrapBg"
+					ng-repeat="document in claim.userDocuments track by $index">
+
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="mbill">Select Bills</label> <select
+									class="form-control" id="mbill" ng-model="document.billType">
+						              <option>Medical</option>
+						              <option>LTA</option>
+						              <option>Driver</option>
+						              <option>Fuel / Vehicle</option>
+						              <option>Phone</option>
+						              <option>Professional Pursuits</option>
+						              <option>Books and Periodicals</option>
+						              <option>Broadband</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label for="BillNo">Bill Number</label> <input type="text"
+									ng-model="document.billNumber" class="form-control" id="BillNo"
+									placeholder="Bill Number" />
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Date</label>
+								<div class="input-group date">
+									<input type="text" class="form-control datepicker ddpick"
+										id="example1" value="12-02-2012" ng-model="document.billDate" />
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="amt">Amount</label>
+								<div class="input-group">
+									<div class="input-group-addon">Rs.</div>
+									<input type="text" class="form-control" id="amt"
+										placeholder="Amount" ng-model="document.billAmount" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-2">
+							<label for="Attachment" class="invisible">Remove Row</label>
+							<button type="submit" ng-click="removeDocument($index)"
+								class="btn btn-primary">Remove Row</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<label for="Attachment">Attachment</label>
+							<div id="fileuploader{{$index}}"/>
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="addBtn">
+					<button type="button" ng-click="addDocument()"
+						class="btn btn-warning pull-right">+ Add Row</button>
+				</div>
+				<h3>Kindly Verify the Bills attached:</h3>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Bill Type</th>
+							<th>Bill Number</th>
+							<th>Date</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="document in claim.userDocuments">
+							<td>{{document.billType}}</td>
+							<td>{{document.billNumber}}</td>
+							<td>{{document.billDate}}</td>
+							<td>{{document.billAmount}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<div id="asd" class="checkbox"> 
+				<label>
+					<input type="checkbox"/> I attest that the document attested by me are real and will be provided whenever required. 
+				</label>
+				</div>
+
+				<div class="buttons">
+					<button type="button" ng-click="uploadClaim('#{userProfile.emailAddress}')" class="btn btn-primary">Submit</button>
+					<button type="button" class="btn btn-default">Cancel</button>
+				</div>
+			</div>
+			<script>
+				$(document).ready(function(e) {
+					$('.ddpick').datepicker({
+						format : 'dd/mm/yyyy'
+					});
+					
+					$(document).on('focus', '.ddpick',  function(){
+					    if (false == $(this).hasClass('hasDatepicker')) {
+					        $(this).datepicker({ format : 'mm/dd/yyyy' });
+					    }
+					});
+					
+					$(document).on('focus', '.ddpick',  function(){
+					    if (false == $(this).hasClass('hasDatepicker')) {
+					        $(this).datepicker({ format : 'dd/mm/yyyy' });
+					    }
+					});
+				});
+			</script>
+		</div>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="layout/application_layout.xhtml">
+
+	<ui:define name="header"/>
+	<ui:define name="body">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+					<div class="loginHomeImage">
+						<img src="#{request.contextPath}/resources/images/homer.jpg"
+							alt="Hcentive Image" />
+					</div>
+					<div class="belowloginImage">
+						<h1>Welcome to Hcentive Finance</h1>
+						<p>Organize your documents with Hcentive finance. Planning,
+							organizing, directing and controlling the financial activities
+							such as procurement and utilization of funds of the enterprise.</p>
+						<div class="buttons">
+							<input type="button" class="btn btn-custom" value="See how" />
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+					<div class="loginForm">
+						<h:form id="registerForm">
+							<div class="regisDiv">
+								<img src="#{request.contextPath}/resources/images/regist.png"
+									alt="Finance" />
+							</div>
+							 <h:messages styleClass="errorMessage" />
+							<div class="loginAreaOne">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<p:outputLabel for="fname" value="First Name" />
+											<p:inputText styleClass="form-control" id="fname"
+												value="#{registerBean.firstName}" required="true" label="fname"/>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<p:outputLabel for="lname" value="Last Name" />
+											<p:inputText styleClass="form-control" id="lname" required="true" label="lname"
+												value="#{registerBean.lastName}" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<p:outputLabel for="email" value="Email Address" />
+									<p:inputText id="email" required="true" label="email" size="40"
+										requiredMessage="Please enter your email address."
+										value="#{registerBean.email}"
+										validatorMessage="Invalid email format"
+										styleClass="form-control">
+										<f:validateRegex
+											pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+									</p:inputText>
+									<p:watermark for="email" value="" />
+									<p:message for="email" />
+								</div>
+								<div class="form-group">
+									<p:outputLabel for="mobileNumber" value="Mobile Number" />
+									<p:inputText styleClass="form-control" id="mobileNumber"
+										value="#{registerBean.mobileNumber}" />
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<p:outputLabel for="pwd1" value="Password" />
+											<p:password id="pwd1" value="#{registerBean.password}"
+												match="pwd2"  required="true" label="pwd1" validatorMessage="Password did not match"
+												styleClass="form-control" inline="true" />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<p:outputLabel for="pwd2" value="Confirm Password" />
+											<p:password id="pwd2" value="#{registerBean.password}"
+												 required="true" label="pwd2"
+												styleClass="form-control" />
+										</div>
+									</div>
+								</div>
+								
+								<h:commandButton update="registerForm" value="Register" action="#{registerBean.submitRegisterAction}"
+									styleClass="btn btn-primary pull-right" />
+
+							</div>
+
+							<div class="clearfix"></div>
+							<div class="row">
+							<p:link styleClass="getHelplink pull-right" target="_self"  value="Back to Login Page"  outcome="loginPage"/>
+							</div>
+
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

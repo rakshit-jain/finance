@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="layout/application_layout.xhtml">
+
+	<ui:define name="header"/>
+	<ui:define name="body">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+					<div class="loginHomeImage">
+						<img src="#{request.contextPath}/resources/images/home1.jpg" alt="Hcentive Image" />
+					</div>
+					<div class="belowloginImage">
+						<h1>Welcome to Hcentive Finance</h1>
+						<p>Organize your documents with Hcentive finance. Planning,
+							organizing, directing and controlling the financial activities
+							such as procurement and utilization of funds of the enterprise.</p>
+						<div class="buttons">
+							<input type="button" class="btn btn-custom" value="See how" />
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+					<div class="loginForm">
+						<h:form>
+							<!-- <div class="form-group"> <img src="images/hcentive-logo1.png" alt="Hcentive Finance"/> </div>-->
+							<div class=" text-center">
+								<img src="#{request.contextPath}/resources/images/userslogin1.png" alt="Finance" />
+							</div>
+							<div class="loginAreaOne">
+								<div class="form-group">
+									<p>
+										We have sent you OTP to your registered Email #{userProfile.emailAddress}. and Mobile No 
+										#{userProfile.mobileNumber}  <br /> Enter
+											OTP to verify 
+											</p>
+								</div>
+								<div class="form-group">
+									<label for="pass">One Time Password:</label> 
+									<p:inputText id="password" required="true" label="pass" 
+									requiredMessage="Please enter your OTP." value="#{otpbean.otp}"
+									styleClass="form-control" placeholder="OTP"/>
+								</div>
+								<a class="getHelplink" href="#">Re-Send OTP </a>
+								 <h:commandButton value="Submit" id="submit" action="#{otpbean.doOTPValidate}" ajax="false" styleClass="btn btn-primary pull-right"/>
+							</div>
+							<div class="form-group text-right margnT40">
+								<img src="#{request.contextPath}/resources/images/PoweredBy_hc.png" alt="Hcentive Finance" />
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/task
+				http://www.springframework.org/schema/task/spring-task.xsd">
+
+	<!-- Enabling Task and crons from here -->
+	<task:annotation-driven />
+	
+	<bean id="userService" class="com.hackathon.webservice.service.impl.UserServiceImpl"/>
+	<bean id="loginService" class="com.hackathon.webservice.service.impl.LoginServiceImpl"/>
+	<bean id="registrationService" class="com.hackathon.webservice.service.impl.RegistrationServiceImpl"/>
+	<bean id="otpService" class="com.hackathon.webservice.service.impl.UserOtpService"/>
+	<bean id="claimService" class="com.hackathon.webservice.service.impl.ClaimServiceImpl"/>
+	<bean id="uploadService" class="com.hackathon.webservice.service.impl.UploadServiceImpl"/>
+	
+	<bean id="config" class="com.hackathon.webservice.util.Config" />
+	
+	<bean id="mailService" class="com.hackathon.webservice.notify.CustomMailSender" init-method="init"/>
+	
+	<bean id="httprequestfactory"
+		class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+		<property name="readTimeout" value="2000" />
+		<property name="connectTimeout" value="2000" />
+	</bean>
+
+	<bean class="org.springframework.web.client.RestTemplate">
+	</bean>
+
+	<!-- THYMELEAF: Template Engine (Spring3-specific version) -->
+	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolvers">
+			<set>
+				<ref bean="emailTemplateResolver" />
+			</set>
+		</property>
+	</bean>
+
+	<!-- THYMELEAF: Template Engine (Spring3-specific version) -->
+	<bean id="stringtemplateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolvers">
+			<set>
+				<bean class="org.thymeleaf.templateresolver.StringTemplateResolver"/>
+			</set>
+		</property>
+	</bean> 
+
+
+	<!-- THYMELEAF: Template Resolver for email templates -->
+	<bean id="emailTemplateResolver" class="org.thymeleaf.templateresolver.FileTemplateResolver">
+		<property name="templateMode" value="HTML" />
+		<property name="characterEncoding" value="UTF-8" />
+		<property name="order" value="1" />
+	</bean>
+
+	<bean id="gson" class="com.google.gson.Gson"/>
+	
+	<bean class="com.hackathon.webservice.notify.Text2LocalImpl" />
+	
+</beans>

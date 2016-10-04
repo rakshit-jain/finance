@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="fevicon/animated_favicon.gif">
+<title>Navbar Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/mainstyle.css" rel="stylesheet">
+<link href="style/bootstrapcss.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="headerarea">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 logo"> <img src="images/hcentive-logo1.png" alt="Logo"/> </div>
+      <div class="headerRight col-md-6"> <!--<ul class="navR"> <li><a href="#">Bamboo</a></li> <li><a href="#">Information</a></li> </ul>-->
+        <div class="user pull-right">
+          <div class="userImage"> <img src="images/icon-person-64.png"> </div>
+          <div class="userName"> <span class="nameuser">Varun Kumar </span> <a href="#" class="updateuser">Update Information</a> </div>
+          <div class="logOut"><a href="#" class="text-hide">Log out </a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="firstRow">
+  <div class="container">
+    <h3> Welcome  Mr. Varun Kumar </h3>
+  </div>
+</div>
+<div class="body-content">
+  <div class="container">
+    <h3 class="rowHeader"><strong>Hc Finance -Updagte Information</strong></h3>
+    <div class="innerWrapBg">
+      <form class="form-horizontal">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="Name" class="col-sm-4 control-label">Name</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="Name" placeholder="Name">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="emailid" class="col-sm-4 control-label">Email Id</label>
+              <div class="col-sm-8">
+                <input type="password" class="form-control" id="emailid" placeholder="Email Id">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="empId" class="col-sm-4 control-label">Emp ID</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="Name" placeholder="Name">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="date" class="col-sm-4 control-label">Date Of Birth</label>
+              <div class="col-sm-8">
+                <input type="date" class="form-control" id="Date Of Birth" placeholder="Date Of Birth">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="gender" class="col-sm-4 control-label">Gender</label>
+            <div class="col-sm-8">
+              <label class="radio-inline">
+                <input type="radio" name="Gender" id="inlineRadio1" value="option1">
+                Male </label>
+              <label class="radio-inline">
+                <input type="radio" name="Gender" id="inlineRadio2" value="option2">
+                Female </label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="emailid" class="col-sm-4 control-label">Address</label>
+              <div class="col-sm-8">
+                <textarea rows="3" cols="10" style="width:100%;"> </textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row buttons">
+          <div class="col-md-12">
+            <input type="button" class="btn btn-primary" value="Update">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="bs-docs-footer-links">
+          <li><a href="https://hcentive.com">Home</a></li>
+          <li><a href="https://twitter.com/hcentive">Twitter</a></li>
+          <li><a href="https://hcentivetech.sharepoint.com/SitePages/Home.aspx" target="_blank">About</a></li>
+        </ul>
+      </div>
+      <p class="footerTExt"> Designed and built by core team  with the help of our contributors</a></p>
+    </div>
+  </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script> 
+<script src="script/bootstrapdate.js"></script> 
+<script src="script/angularScript.js"></script> 
+<script type="text/javascript">
+$(document).ready(function(e){
+	 $('#example1').datepicker({
+    format: 'mm/dd/yyyy'}); 
+});
+</script>
+</body>
+</html>

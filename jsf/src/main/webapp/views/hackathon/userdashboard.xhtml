@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="layout/application_layout.xhtml">
+<ui:define name="metaTags">
+<f:event type="preRenderView" listener="#{userviewbean.fetchclaims()}" />
+</ui:define>
+	<ui:define name="body">
+		<div class="body-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+						<div class='container-ac'>
+							<div class='item'>Introduction</div>
+							<div class='item-data'>
+								<div class="gadget">
+									<div class="view g-intro">
+										<div class="intro">
+											<img height="64" width="64"
+												src="#{request.contextPath}/resources/images/ilogo.png"
+												class="intro-logo" />
+											<h3>Welcome to HcFinance</h3>
+											<p>
+												New to HcFinance? Check out the <a
+													title="HcFinance User's Guide" alt="Get help!"
+													href="https://hcentivetech.sharepoint.com/SitePages/Home.aspx"
+													target="_blank" id="user-docs">HcFinance User's Guide</a>.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class='item'>Current Pending Bills</div>
+							<div class='item-data'>
+							<!-- <p:dataTable var="claim" value="#{userviewbean.claims}"
+								styleClass="table  table-striped">
+								<p:column headerText="Claim ID">
+									<h:outputText value="#{claim.id}" />
+								</p:column>
+
+								<p:column headerText="Description">
+									<h:outputText
+										value="#{claim.userProfile.name} / #{claim.userProfile.employeeId}" />
+								</p:column>
+
+								<p:column headerText="Created Date">
+									<h:outputText value="#{claim.createdDate}">
+										<f:convertDateTime pattern="dd-MM-yyyy" />
+									</h:outputText>
+								</p:column>
+							</p:dataTable> -->
+							
+							<table class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>Document ID</th>
+										<th>Description</th>
+										<th>Created Date</th>
+									</tr>
+								</thead>
+								<tbody>
+								<ui:fragment rendered="#{userviewbean.claims eq null}">
+								<tr>
+												 <td colspan="3">No Pending Bills</td>
+											</tr>
+								</ui:fragment>
+								<ui:fragment rendered="#{userviewbean.claims ne null}">
+        
+    
+									<ui:repeat var="claim" value="#{userviewbean.claims}">
+										<ui:repeat var="document" value="#{claim.userDocuments}">
+											<tr>
+												<td><h:outputText value="#{document.id}" /></td>
+												<td><h:outputText value="#{document.billType}" /></td>
+												<td><h:outputText value="#{claim.createdDate}">
+														<f:convertDateTime pattern="dd-MM-yyyy" />
+													</h:outputText>
+												</td>
+											</tr>
+										</ui:repeat>
+									</ui:repeat>
+									</ui:fragment> 
+								</tbody>
+							</table>
+								
+							</div>
+							<div class="buttons">
+								<a href="#{request.contextPath}/submitbills" class="btn btn-primary pull-right">Submit Bills
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+						<div class='container-ac'>
+							<div class='item'>Recent Notifications</div>
+							<ui:fragment rendered="#{userviewbean.claims eq null}">
+							<div class='item-data'>
+							<div class = "alert alert-info"><STRONG>No Notification</STRONG></div>
+							
+							</div>
+							</ui:fragment>
+							<ui:fragment rendered="#{userviewbean.claims ne null}">
+							<div class='item-data'>
+							<ui:repeat var="claim" value="#{userviewbean.claims}">
+							<ui:repeat var="document" value="#{claim.userDocuments}">
+								<div class="alert alert-success">
+									<strong></strong> You'r document with id #{document.id} has been successfully received  and waiting for review.
+								</div>
+								</ui:repeat>
+								</ui:repeat>
+							</div>
+							</ui:fragment>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

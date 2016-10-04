@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns:bean="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+	xmlns="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+	<global-method-security secured-annotations="enabled" />
+	
+    
+<!-- 	<http auto-config="true"> -->
+		<!-- 
+		<csrf disabled="true"/>
+		
+		<custom-filter ref="restAuthenticationFilter" position="BASIC_AUTH_FILTER" />
+		
+		Real configuration goes here
+		<intercept-url pattern="/.*/(getalluser|asset/book|getassetbyuser|modifyuser|modify/oldpass.*|complaint.*|getuserwallet.*|asset/get.*)$" access="hasAnyAuthority('USER')" />
+		<intercept-url pattern="/.*/(asset/register|asset/modify|resetpassword|vehicle/add|/user/register|user/sendsms|user/defaulters|notification).*$" access="hasAnyAuthority('SOCIETY_ADMIN')" />
+		<intercept-url pattern="/.*/currentuser" access="hasAnyAuthority('SOCIETY_ADMIN','ADMIN','USER')" />
+		
+		User Payment method
+		<intercept-url pattern="/.*/addPayment" access="hasAnyAuthority('SOCIETY_ADMIN','ADMIN')" />
+		
+		<intercept-url pattern="/user" access="hasAnyAuthority('ADMIN')" />
+		 -->
+<!-- 	</http> -->
+
+
+	
+	
+
+
+</bean:beans>

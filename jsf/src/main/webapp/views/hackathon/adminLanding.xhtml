@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="layout/application_layout.xhtml">
+
+	<ui:define name="metaTags">
+		<f:event type="preRenderView" listener="#{adminViewBean.init}" />
+	</ui:define>
+
+	<ui:define name="body">
+		<div class="body-content">
+			<div class="container">
+				<h2>Hc Finance Admin Panel</h2>
+
+				<div id="exTab3">
+					<ul class="nav nav-pills">
+						<li class="active"><a href="#1b" data-toggle="tab">Pending</a>
+						</li>
+						<li><a href="#2b" data-toggle="tab">Closed</a></li>
+					</ul>
+					<div class="tab-content clearfix">
+						<div class="tab-pane active" id="1b">
+							<p:dataTable var="claim" value="#{adminViewBean.pendingClaims}"
+								styleClass="table table-bordered table-striped">
+								<p:column headerText="Claim ID">
+									<h:outputText value="#{claim.id}" />
+								</p:column>
+
+								<p:column headerText="User Name / Emp ID">
+									<h:outputText
+										value="#{claim.userProfile.name} / #{claim.userProfile.employeeId}" />
+								</p:column>
+
+								<p:column headerText="Created Date">
+									<h:outputText value="#{claim.createdDate}">
+										<f:convertDateTime pattern="dd-MM-yyyy" />
+									</h:outputText>
+								</p:column>
+
+								<p:column headerText="Action" styleClass="text-center">
+									<p:link
+										outcome="adminApproval?claimId=#{claim.id}&amp;faces-redirect=true">
+										<img
+											src="#{request.contextPath}/resources/images/OFFice-51-48.png"
+											alt="details" />
+									</p:link>
+								</p:column>
+							</p:dataTable>
+						</div>
+						<div class="tab-pane" id="2b">
+							<p:dataTable var="claim" value="#{adminViewBean.closedClaims}"
+								styleClass="table table-bordered table-striped">
+								<p:column headerText="Claim ID">
+									<h:outputText value="#{claim.id}" />
+								</p:column>
+
+								<p:column headerText="User Name / Emp ID">
+									<h:outputText
+										value="#{claim.userProfile.name} / #{claim.userProfile.employeeId}" />
+								</p:column>
+
+								<p:column headerText="Created Date">
+									<h:outputText value="#{claim.createdDate}">
+										<f:convertDateTime pattern="dd-MM-yyyy" />
+									</h:outputText>
+								</p:column>
+
+								<p:column headerText="Updated Date">
+									<h:outputText value="#{claim.updatedDate}">
+										<f:convertDateTime pattern="dd-MM-yyyy" />
+									</h:outputText>
+								</p:column>
+
+								<p:column headerText="Action" styleClass="text-center">
+									<p:link
+										outcome="adminApproval?claimId=#{claim.id}&amp;faces-redirect=true">
+										<img
+											src="#{request.contextPath}/resources/images/OFFice-51-48.png"
+											alt="details" />
+									</p:link>
+								</p:column>
+							</p:dataTable>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

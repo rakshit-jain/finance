@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="fevicon/animated_favicon.gif">
+<title>Navbar Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/mainstyle.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="headerarea">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 logo"> <img src="images/hcentive-logo1.png" alt="Logo"/> </div>
+      <div class="headerRight col-md-6"> <!--<ul class="navR"> <li><a href="#">Bamboo</a></li> <li><a href="#">Information</a></li> </ul>-->
+        <div class="user pull-right">
+          <div class="userImage"> <img src="images/icon-person-64.png"> </div>
+          <div class="userName"> <span class="nameuser">Varun Kumar </span> <a href="#" class="updateuser">Update Information</a> </div>
+          <div class="logOut"><a href="#" class="text-hide">Log out </a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="firstRow">
+  <div class="container">
+    <h3> Welcome  Mr. Varun Kumar </h3>
+  </div>
+</div>
+  <div class="body-content">
+<div class="container">
+
+    <div class="row">
+      <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+        <div class='container-ac'>
+          <div class='item'>Introduction</div>
+          <div class='item-data'>
+            <div class="gadget">
+              <div class="view g-intro">
+                <div class="intro"><img height="64" width="64" src="images/ilogo.png" class="intro-logo">
+                  <h3>Welcome to HcFinance</h3>
+                  <p>New to HcFinance? Check out the <a title="HcFinance User's Guide" alt="Get help!" href="https://hcentivetech.sharepoint.com/SitePages/Home.aspx" target="_blank" id="user-docs">HcFinance User's Guide</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='item'>Current Pending Bills  </div>
+          <div class='item-data'>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Description</th>
+                  <th>Due Date</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Fuel / Vehicle </td>
+                  <td>15/10/2016</td>
+                  
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Books and Periodicals</td>
+                  <td>15/10/2016</td>
+                  
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Medical</td>
+                  <td>15/10/2016</td>
+                  
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Driver</td>
+                  <td>15/10/2016</td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="buttons">
+          <a href="#" class="btn btn-primary pull-right">Submit  Bills </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+        <div class='container-ac'>
+          <div class='item'>Recent Notifications</div>
+          <div class='item-data'>
+            <div class="alert alert-success"> <strong>Success!</strong> This alert box could indicate a successful or positive action. <span class="whentime">30/Sep/16 5:31 AM</span> </div>
+            <div class="alert alert-info"> <strong>Info!</strong> This alert box could indicate a neutral informative change or action. </div>
+            <div class="alert alert-warning"> <strong>Warning!</strong> This alert box could indicate a warning that might need attention. </div>
+            <div class="alert alert-danger"> <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action. </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="bs-docs-footer-links">
+          <li><a href="https://hcentive.com">Home</a></li>
+          <li><a href="https://twitter.com/hcentive">Twitter</a></li>
+          <li><a href="https://hcentivetech.sharepoint.com/SitePages/Home.aspx" target="_blank">About</a></li>
+        </ul>
+      </div>
+      <p class="footerTExt"> Designed and built by core team  with the help of our contributors</a></p>
+    </div>
+  </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script> 
+<script src="script/angularScript.js"></script> 
+<script type="text/javascript">
+$(document).ready(function(e){
+	$('.item').click(function (e){
+		if($(this).next('.item-data').css('display') != 'block'){
+			$('.active').slideUp('fast').removeClass('active');
+			$(this).next('.item-data').addClass('active').slideDown('slow');
+		} else {
+			$('.active').slideUp('fast').removeClass('active');
+		}
+	});
+});
+</script>
+</body>
+</html>

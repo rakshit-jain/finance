@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="layout/application_layout.xhtml">
+
+	<ui:define name="metaTags">
+		<f:event type="preRenderView" listener="#{adminApprovalBean.init}" />
+	</ui:define>
+
+	<ui:define name="body">
+		<div class="body-content">
+			<div class="container">
+				<h2>Hc Finance Admin Panel</h2>
+				<div class="innerWrapBg">
+					<h3>Detail Bill Information of Claim <strong>#{adminApprovalBean.claimId}</strong></h3>
+					<h:form id="documentDetails">
+						<p:dataTable var="document" value="#{adminApprovalBean.documents}"
+							styleClass="table table-bordered table-striped whiteBg">
+							<p:column headerText="Bill Id"
+								styleClass=" table-bordered table-striped whiteBg">
+								<h:outputText value="#{document.id}"
+									styleClass="table-striped whiteBg" />
+							</p:column>
+
+							<p:column headerText="Name / Emp ID"
+								styleClass="table-bordered table-striped whiteBg">
+								<h:outputText styleClass="table-striped whiteBg"
+									value="#{adminApprovalBean.userProfile.name} / #{adminApprovalBean.userProfile.employeeId}" />
+							</p:column>
+
+							<p:column headerText="Created Date"
+								styleClass="table-bordered table-striped whiteBg">
+								<h:outputText value="#{document.createdDate}"
+									styleClass=" table-striped whiteBg">
+									<f:convertDateTime pattern="dd-MM-yyyy" />
+								</h:outputText>
+							</p:column>
+
+							<p:column headerText="Bill Type"
+								styleClass="table-bordered table-striped whiteBg">
+								<h:outputText value="#{document.billType}"
+									styleClass=" table-striped whiteBg" />
+							</p:column>
+
+							<p:column headerText="Bill Number"
+								styleClass="table-bordered table-striped whiteBg">
+								<h:outputText value="#{document.billNumber}"
+									styleClass=" table-striped whiteBg" />
+							</p:column>
+
+							<p:column headerText="Amount"
+								styleClass="table-bordered table-striped whiteBg">
+								<h:outputText value="#{document.billAmount}"
+									styleClass=" table-striped whiteBg" />
+							</p:column>
+
+							<p:column headerText="Attachment"
+								styleClass="table-bordered table-striped whiteBg text-center">
+								<a href="#{document.fileName}" target="_blank">
+									<img src="#{request.contextPath}/resources/images/viewdoc.png"
+										alt="View Document" />
+								</a>
+							</p:column>
+							<p:column headerText="Action" styleClass="table-bordered table-striped whiteBg text-center" id ="action">
+								<ui:fragment rendered="#{document.status=='PENDING'}">
+									<a
+										href="javascript:updateStatus(#{document.id},'#{adminApprovalBean.claimId}','APPROVED', '#{adminApprovalBean.URL}');"
+										class="approveIt" data-toggle="confirmation"
+										data-btn-ok-label="Approve"
+										data-btn-ok-icon="glyphicon glyphicon-share-alt"
+										data-btn-ok-class="btn-success" data-btn-cancel-label="Wait"
+										data-btn-cancel-icon="glyphicon"
+										data-btn-cancel-class="btn-default" data-title="Confirmation"
+										data-content="Are you sure you want to Approve?">
+										<img
+										src="#{request.contextPath}/resources/images/011_yes-20.png"
+										alt="Approve" />
+									</a>
+									<span class="pie"></span>
+									<a
+										href="javascript:updateStatus(#{document.id},'#{adminApprovalBean.claimId}','REJECTED', '#{adminApprovalBean.URL}');"
+										class="RejectIt" data-toggle="confirmation"
+										data-btn-ok-label="Reject"
+										data-btn-ok-icon="glyphicon glyphicons-message-forward"
+										data-btn-ok-class="btn-danger" data-btn-cancel-label="Wait"
+										data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
+										data-btn-cancel-class="btn-default" data-title="Confirmation"
+										data-content="Are you sure you want to Reject?"> <img
+										src="#{request.contextPath}/resources/images/thumbs-down-circle-red-20.png"
+										alt="Approve" />
+									</a>
+								</ui:fragment>
+								<ui:fragment rendered="#{document.status!='PENDING'}" >
+									<p:outputLabel value="#{document.status}" />
+								</ui:fragment>
+							</p:column>
+						</p:dataTable>
+					</h:form>
+				</div>
+				<div class="buttons">
+					<p:button value="Back" outcome="adminLanding"
+						styleClass="btn btn-primary" />
+				</div>
+			</div>
+		</div>
+		<script src="#{request.contextPath}/resources/script/bootcon.js"></script>
+		<script type="text/javascript">
+			function updateStatus(documentId, claimId, status, URL) {
+				$.ajax({
+					url : URL + '/claim/updateDocumentStatus' + '?claimId='
+							+ claimId + '&amp;documentId=' + documentId
+							+ '&amp;documentStatus=' + status,
+					type : 'POST',
+					data : '',
+					success : function() {
+						alert('Status updated successfully');
+						location.reload();
+					}
+				});
+			}
+			$(document).ready(function(e) {
+				$('[data-toggle=confirmation]').confirmation({
+					rootSelector : '[data-toggle=confirmation]',
+				// other options
+				});
+			});
+		</script>
+	</ui:define>
+</ui:composition>
